@@ -1,0 +1,2 @@
+# moe-windowsetting-linker
+MoE のキャラのウィンドウ設定をシンボリックリンクを使って同期するバッチファイル
