@@ -28,7 +28,7 @@ for %%A in (wnd msgopt wnd_docking) do (
 for /f %%A in ('wmic os get LocalDateTime ^| findstr \.') do set DATE=%%A
 set BACKUPDIR=%DIR%\window_setting\backup\!DATE:~0,8!
 if not exist "!BACKUPDIR!" (mkdir "!BACKUPDIR!")
-cp -f "%DIR%\window_setting\*.ini" "!BACKUPDIR!"
+copy /Y "%DIR%\window_setting\*.ini" "!BACKUPDIR!"
 
 
 for /d %%A in ("%DIR%\*_") do (
@@ -52,7 +52,7 @@ for /d %%A in ("%DIR%\*_") do (
 
       if "!ATTR:l=!" == "!ATTR!" (
         if not exist "!BACKUPDIR!\!CHRNAMEDIR!" (mkdir "!BACKUPDIR!\!CHRNAMEDIR!")
-        cp -f "!CHRDIR!\!INI!" "!BACKUPDIR!\!CHRNAMEDIR!"
+        copy /Y "!CHRDIR!\!INI!" "!BACKUPDIR!\!CHRNAMEDIR!"
       )
 
       del "!CHRDIR!\!INI!"
@@ -60,7 +60,7 @@ for /d %%A in ("%DIR%\*_") do (
 
     if defined ALTINI (
       if not exist "%DIR%\window_setting\!ALTINI!" (
-        cp -f "%DIR%\window_setting\!INI!" "%DIR%\window_setting\!ALTINI!"
+        copy /Y "%DIR%\window_setting\!INI!" "%DIR%\window_setting\!ALTINI!"
       )
 
       mklink "!CHRDIR!\!INI!" "%DIR%\window_setting\!ALTINI!"
